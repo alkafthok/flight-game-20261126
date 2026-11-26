@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sembel Sky Courier — 3D Flight Game</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.min.js" } }
+</script>
+</head>
+<body>
+<div id="scene"></div>
+
+<div id="hud" class="hidden">
+  <div id="hud-top">
+    <div class="panel gauge">
+      <div class="label">SPEED</div>
+      <div class="value"><span id="speed">0</span><span class="unit"> KT</span></div>
+    </div>
+    <div class="panel gauge wide">
+      <canvas id="compass" width="260" height="36"></canvas>
+      <div class="label center" id="heading-text">HDG 090&deg;</div>
+    </div>
+    <div class="panel gauge">
+      <div class="label">ALTITUDE</div>
+      <div class="value"><span id="alt">0</span><span class="unit"> FT</span></div>
+    </div>
+  </div>
+
+  <div id="hud-left">
+    <div class="panel">
+      <div class="label">FUEL</div>
+      <div class="bar"><div id="fuel-fill"></div></div>
+      <div class="sub" id="fuel-text">100%</div>
+    </div>
+    <div class="panel">
+      <div class="label">THROTTLE</div>
+      <div class="bar"><div id="thr-fill"></div></div>
+      <div class="sub" id="thr-text">0%</div>
+    </div>
+    <div class="panel">
+      <div class="label">AIRFRAME</div>
+      <div id="damage-dots">
+        <span class="dot ok"></span><span class="dot ok"></span><span class="dot ok"></span>
+      </div>
+      <div class="sub" id="damage-text">No damage</div>
+    </div>
+  </div>
+
+  <div id="hud-right">
+    <div class="panel">
+      <div class="label">SCORE</div>
+      <div class="value" id="score">0</div>
+    </div>
+    <div class="panel">
+      <div class="label">TIME</div>
+      <div class="value" id="time">0:00</div>
+    </div>
+    <div class="panel">
+      <div class="label">RINGS</div>
+      <div class="value" id="rings">0 / 5</div>
+    </div>
+  </div>
+
+  <div id="hud-bottom">
+    <div class="panel" id="horizon-panel">
+      <canvas id="horizon" width="132" height="132"></canvas>
+      <div class="label center">ATTITUDE</div>
+    </div>
+    <div id="objective" class="panel">Fly through the glowing rings</div>
+  </div>
+
+  <div id="crosshair"></div>
+  <div id="flash"></div>
+</div>
+
+<div id="screen-title" class="screen">
+  <div class="card">
+    <h1>SEMBEL SKY COURIER</h1>
+    <p class="tagline">Island delivery run &mdash; thread the rings, land the cargo.</p>
+    <p class="brief">A small prop courier over a tropical archipelago. Fly through all five
+      glowing rings, then put her down gently on the runway. Watch your fuel,
+      mind your speed on final &mdash; three hard hits and the sortie is over.</p>
+    <button id="btn-start" class="btn big">Start Delivery</button>
+    <div class="controls">
+      <div><b>Mouse</b> steer (bank &amp; pitch)</div>
+      <div><b>W / S</b> or <b>&uarr; / &darr;</b> throttle</div>
+      <div><b>C</b> chase / cockpit camera</div>
+      <div><b>P</b> pause &nbsp; <b>R</b> restart &nbsp; <b>M</b> mute</div>
+    </div>
+  </div>
+</div>
+
+<div id="screen-pause" class="screen hidden">
+  <div class="card">
+    <h1>PAUSED</h1>
+    <p class="tagline">The islands will wait.</p>
+    <button id="btn-resume" class="btn big">Resume</button>
+    <button id="btn-restart-pause" class="btn">Restart Sortie</button>
+  </div>
+</div>
+
+<div id="screen-complete" class="screen hidden">
+  <div class="card">
+    <h1>DELIVERY COMPLETE</h1>
+    <p class="tagline">Cargo on the ground, rings threaded, wings intact.</p>
+    <div class="stats">
+      <div>Score <b id="final-score">0</b></div>
+      <div>Time <b id="final-time">0:00</b></div>
+      <div>Fuel left <b id="final-fuel">0%</b></div>
+    </div>
+    <button id="btn-again" class="btn big">Fly Again</button>
+  </div>
+</div>
+
+<div id="screen-crash" class="screen hidden">
+  <div class="card">
+    <h1>CRASHED</h1>
+    <p class="tagline" id="crash-reason">The airframe gave up.</p>
+    <div class="stats">
+      <div>Score <b id="crash-score">0</b></div>
+      <div>Rings <b id="crash-rings">0 / 5</b></div>
+    </div>
+    <button id="btn-retry" class="btn big">Retry Sortie</button>
+  </div>
+</div>
+
+<div id="errlog" style="display:none"></div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
