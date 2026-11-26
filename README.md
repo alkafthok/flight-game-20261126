@@ -1,3 +1,7 @@
+[![make.fun · best-flight-game-20261126-0057](https://make.fun/badge/best-flight-game-20261126-0057.svg)](https://make.fun/bounty/best-flight-game-20261126-0057?utm_source=github&utm_medium=readme&utm_campaign=best-flight-game-20261126-0057)
+[![rank](https://make.fun/badge/best-flight-game-20261126-0057/alkafthok/flight-game-20261126/rank.svg)](https://make.fun/bounty/best-flight-game-20261126-0057/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=best-flight-game-20261126-0057)
+[![reward](https://make.fun/badge/best-flight-game-20261126-0057/alkafthok/flight-game-20261126/reward.svg)](https://make.fun/bounty/best-flight-game-20261126-0057?utm_source=github&utm_medium=readme&utm_campaign=best-flight-game-20261126-0057)
+
 # Sembel Sky Courier
 
 ![Sembel Sky Courier](screenshots/1-start.jpg)
@@ -35,7 +39,7 @@ static server). No network request is made while it plays.
 
 ## Entry
 
-Built for the make.fun bounty "Make the best flight game"
+Built for the [make.fun bounty "Make the best flight game"](https://make.fun/bounty/best-flight-game-20261126-0057)
 (`best-flight-game-20261126-0057`). `main.ts` hands the game in: it copies
 `game/` and `screenshots/` to the output directory and writes `dossier.json`.
 
